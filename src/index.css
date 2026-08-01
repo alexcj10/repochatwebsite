@@ -760,7 +760,6 @@ html.nav-open-lock body {
 
 @media (hover: hover) {
   .feature-card-bento:hover {
-    transform: translateY(-8px);
     border-color: var(--accent);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
   }
@@ -2627,7 +2626,6 @@ textarea.form-input {
 .arch-pillar-card:hover {
   background: rgba(139, 92, 246, 0.04);
   border-color: rgba(139, 92, 246, 0.25);
-  transform: translateY(-3px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(139, 92, 246, 0.06);
 }
 
@@ -2858,7 +2856,6 @@ textarea.form-input {
 
 @media (hover: hover) {
   .feat-card:hover {
-    transform: translateY(-6px);
   }
 }
 
@@ -3471,7 +3468,7 @@ textarea.form-input {
 }
 
 .feat-deck-card:hover {
-  transform: translateY(-24px) rotateY(0deg) scale(1.06);
+  transform: rotateY(0deg) scale(1.06);
   z-index: 10;
   border-color: rgba(139, 92, 246, 0.35);
   box-shadow:
@@ -3638,7 +3635,7 @@ textarea.form-input {
   }
 
   .feat-deck-card:hover {
-    transform: translateY(-8px) scale(1.02);
+    transform: scale(1.02);
   }
 }
 
@@ -4470,7 +4467,6 @@ button.plan-btn {
 
 .why-card:hover {
   border-color: rgba(139, 92, 246, 0.2);
-  transform: translateY(-2px);
   box-shadow: 0 8px 32px rgba(139, 92, 246, 0.08);
 }
 
@@ -5029,7 +5025,6 @@ button.plan-btn {
 .eco-pillar-card:hover {
   border-color: rgba(139, 92, 246, 0.25);
   background: rgba(139, 92, 246, 0.04);
-  transform: translateY(-3px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(139, 92, 246, 0.06);
 }
 
@@ -5196,7 +5191,6 @@ button.plan-btn {
 .sec-stat-card:hover {
   border-color: rgba(139, 92, 246, 0.2);
   background: rgba(139, 92, 246, 0.04);
-  transform: translateY(-2px);
 }
 
 .sec-stat-value {
