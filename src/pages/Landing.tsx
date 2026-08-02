@@ -1058,7 +1058,7 @@ const AnimatedRepoChat = () => {
       ref={ref}
       className="h1" 
       style={{ 
-        fontSize: 'clamp(3rem, 18vw, 12rem)',
+        fontSize: 'clamp(3rem, 18vw, 18rem)',
         fontWeight: 400, 
         letterSpacing: '-0.03em', 
         marginBottom: 0, 
