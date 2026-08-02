@@ -751,7 +751,7 @@ html.nav-open-lock body {
   background: rgba(25, 25, 30, 0.5);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 28px;
+  border-radius: var(--radius);
   overflow: hidden;
   transition: all 0.4s var(--ease);
   display: flex;
@@ -761,7 +761,7 @@ html.nav-open-lock body {
 @media (hover: hover) {
   .feature-card-bento:hover {
     border-color: var(--accent);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
+    box-shadow: none;
   }
 }
 
