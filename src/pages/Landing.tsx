@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
-import { ArrowRight, Check, X, Sparkles, GitPullRequest, AlertCircle, Users, Code, Network, Cpu, Clock, DollarSign, BarChart3, Bot } from 'lucide-react'
+import { ArrowRight, Check, X, Sparkles, GitPullRequest, AlertCircle, Users, Code, Network, Cpu, Clock, DollarSign, BarChart3, Bot, ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion, useScroll, useTransform, useInView, animate, useMotionValue, useSpring } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
@@ -68,7 +68,15 @@ export default function Landing() {
   const heroRef = useRef<HTMLDivElement>(null)
   const panelRef = useRef<HTMLDivElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
+  const miniGridRef = useRef<HTMLDivElement>(null)
   const [activeMiniFeature, setActiveMiniFeature] = useState(0)
+
+  const scrollMiniGrid = (dir: 'left' | 'right') => {
+    if (miniGridRef.current) {
+      const scrollAmount = 400;
+      miniGridRef.current.scrollBy({ left: dir === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+    }
+  };
 
   const coreFeatures = [
     {
@@ -689,7 +697,11 @@ export default function Landing() {
             </div>
           </ScrollReveal>
 
-          <div className="mini-features-grid" onScroll={handleGridScroll}>
+          <div className="mini-features-carousel">
+            <button className="mini-scroll-btn mini-scroll-left" onClick={() => scrollMiniGrid('left')} aria-label="Scroll left">
+              <ChevronLeft size={24} />
+            </button>
+            <div className="mini-features-grid" ref={miniGridRef} onScroll={handleGridScroll}>
             {[
               { 
                 title: 'Message Reactions', 
@@ -938,7 +950,10 @@ export default function Landing() {
               </ScrollReveal>
             ))}
           </div>
-
+            <button className="mini-scroll-btn mini-scroll-right" onClick={() => scrollMiniGrid('right')} aria-label="Scroll right">
+              <ChevronRight size={24} />
+            </button>
+          </div>
           <div className="mini-features-pagination">
             {Array.from({ length: 15 }).map((_, i) => (
               <div 

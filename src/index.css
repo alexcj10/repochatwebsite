@@ -872,6 +872,51 @@ html.nav-open-lock body {
 /* ============================================
    MINI FEATURES — Horizontal Scroll Cards
    ============================================ */
+.mini-features-carousel {
+  position: relative;
+}
+
+.mini-scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(25, 25, 30, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s var(--ease);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.mini-scroll-btn:hover {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.mini-scroll-left {
+  left: 20px;
+}
+
+.mini-scroll-right {
+  right: 20px;
+}
+
+@media(max-width: 900px) {
+  .mini-scroll-btn {
+    display: none;
+  }
+}
+
 .mini-features-grid {
   display: flex;
   flex-wrap: nowrap;
