@@ -340,7 +340,7 @@ ul {
 
   .navbar {
     top: 8px;
-    width: calc(100% - 24px);
+    width: calc(100% - 40px);
     min-height: 48px;
     border-radius: 16px
   }
