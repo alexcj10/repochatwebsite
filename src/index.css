@@ -900,7 +900,7 @@ html.nav-open-lock body {
   background: rgba(139, 92, 246, 0.2);
   border-color: var(--accent);
   color: var(--accent);
-  transform: translateY(-50%) scale(1.1);
+  transform: translateY(-50%);
 }
 
 .mini-scroll-left {
