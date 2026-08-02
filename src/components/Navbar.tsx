@@ -84,7 +84,7 @@ export default function Navbar() {
                   key={i}
                   initial={isO ? { rotateY: 0 } : {}}
                   animate={isO ? { rotateY: 1440 * spinCount } : {}}
-                  transition={isO ? { duration: 2.4, ease: [0.16, 1, 0.3, 1] } : {}}
+                  transition={isO ? { duration: 2.4, ease: [0.16, 1, 0.3, 1], delay: spinCount === 1 ? 0.8 : 0 } : {}}
                   style={{ display: 'inline-block', originX: 0.5, originY: 0.5 }}
                 >
                   {letter}
