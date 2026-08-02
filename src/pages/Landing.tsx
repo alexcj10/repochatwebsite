@@ -1039,10 +1039,57 @@ export default function Landing() {
       <section className="section" style={{ padding: '40px 0 80px', position: 'relative', overflow: 'hidden', textAlign: 'center' }}>
         <div className="container">
           <ScrollReveal>
-            <h2 className="h1" style={{ fontSize: 'clamp(3rem, 18vw, 12rem)', fontWeight: 400, letterSpacing: '-0.03em', marginBottom: 0, lineHeight: 1, color: 'rgba(255,255,255,0.9)' }}>RepoChat.</h2>
+            <AnimatedRepoChat />
           </ScrollReveal>
         </div>
       </section>
     </>
   )
 }
+
+const AnimatedRepoChat = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { margin: "-50px" });
+
+  const letters = ["R", "e", "p", "o", "C", "h", "a", "t", "."];
+  
+  return (
+    <h2 
+      ref={ref}
+      className="h1" 
+      style={{ 
+        fontSize: 'clamp(3rem, 18vw, 12rem)', 
+        fontWeight: 400, 
+        letterSpacing: '-0.03em', 
+        marginBottom: 0, 
+        lineHeight: 1, 
+        color: 'rgba(255,255,255,0.9)' 
+      }}
+    >
+      <span style={{ display: 'inline-flex', position: 'relative' }}>
+        {letters.map((letter, i) => {
+          const isO = letter === "o";
+          return (
+            <motion.span
+              key={i}
+              initial={isO ? { rotateY: 0 } : {}}
+              animate={isInView && isO ? { rotateY: 360 } : { rotateY: 0 }}
+              transition={
+                isO 
+                  ? { duration: 1.5, ease: "circOut", delay: 0.3 } 
+                  : {}
+              }
+              style={{ 
+                display: 'inline-block',
+                originX: 0.5,
+                originY: 0.5,
+              }}
+            >
+              {letter}
+            </motion.span>
+          );
+        })}
+      </span>
+    </h2>
+  );
+};
