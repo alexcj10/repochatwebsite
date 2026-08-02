@@ -3990,9 +3990,8 @@ textarea.form-input {
 .mobile-signin-section,
 .mobile-user-section {
   margin-top: 32px;
-  padding-top: 28px;
+  padding-top: 0;
   padding-bottom: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .mobile-signin-btn {
