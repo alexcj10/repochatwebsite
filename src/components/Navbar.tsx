@@ -27,15 +27,7 @@ export default function Navbar() {
     window.scrollTo(0, 0)
   }, [location.pathname])
 
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    if (mobileOpen) {
-      document.documentElement.classList.add('nav-open-lock');
-    } else {
-      document.documentElement.classList.remove('nav-open-lock');
-    }
-    return () => { document.documentElement.classList.remove('nav-open-lock'); };
-  }, [mobileOpen]);
+
 
   // Close dropdown on outside click
   useEffect(() => {
