@@ -5766,3 +5766,19 @@ button.plan-btn {
     display: none;
   }
 }
+
+/* ============================================
+   TYPEWRITER CURSOR
+   ============================================ */
+.cursor-blink {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+  color: var(--accent);
+  font-weight: 300;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
