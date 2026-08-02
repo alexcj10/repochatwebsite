@@ -386,7 +386,7 @@ html.nav-open-lock body {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-top: 8px;
+  margin-top: 0;
 }
 
 .mobile-nav-links li a {

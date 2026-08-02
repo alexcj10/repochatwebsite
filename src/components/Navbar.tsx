@@ -189,7 +189,7 @@ export default function Navbar() {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div style={{ padding: '24px' }}>
+            <div style={{ padding: '12px 24px 24px 24px' }}>
               <ul className="mobile-nav-links">
               <li><Link to="/features" onClick={() => setMobileOpen(false)}>Features</Link></li>
               <li><Link to="/pricing" onClick={() => setMobileOpen(false)}>Pricing</Link></li>
