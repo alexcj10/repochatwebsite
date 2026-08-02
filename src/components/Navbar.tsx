@@ -179,19 +179,18 @@ export default function Navbar() {
         </div>
       </div>
 
-    </nav>
-
-    {/* Mobile Menu Overlay — outside nav to avoid transform stacking context */}
+    {/* Mobile Menu Overlay */}
     <AnimatePresence>
         {mobileOpen && (
           <motion.div 
             className="mobile-menu-overlay"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.15, ease: "easeOut" }}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            <ul className="mobile-nav-links">
+            <div style={{ padding: '24px' }}>
+              <ul className="mobile-nav-links">
               <li><Link to="/features" onClick={() => setMobileOpen(false)}>Features</Link></li>
               <li><Link to="/pricing" onClick={() => setMobileOpen(false)}>Pricing</Link></li>
               <li><Link to="/security" onClick={() => setMobileOpen(false)}>Security</Link></li>
@@ -231,9 +230,11 @@ export default function Navbar() {
                 </button>
               </div>
             ) : null}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
+    </nav>
 
     <AuthModal isOpen={authModalOpen} onClose={() => setAuthModalOpen(false)} />
     </>
