@@ -89,7 +89,7 @@ html {
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: var(--bg);
+  background: #050505;
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: clip
@@ -98,6 +98,21 @@ body {
 a {
   color: inherit;
   text-decoration: none
+}
+
+main {
+  position: relative;
+  z-index: 2;
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+@media (min-width: 900px) {
+  main {
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  }
 }
 
 img {
@@ -1608,10 +1623,18 @@ html.nav-open-lock body {
    ============================================ */
 .footer {
   position: relative;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: none;
   padding: 100px 0 90px;
   background: #050505;
-  overflow: hidden
+  overflow: hidden;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .footer {
+    position: sticky;
+    bottom: 0;
+  }
 }
 
 .footer::before {
