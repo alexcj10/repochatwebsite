@@ -1051,14 +1051,14 @@ const AnimatedRepoChat = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { margin: "-50px" });
 
-  const letters = ["R", "e", "p", "o", "C", "h", "a", "t", "."];
+  const letters = ["R", "e", "p", "o", "C", "h", "a", "t"];
   
   return (
     <h2 
       ref={ref}
       className="h1" 
       style={{ 
-        fontSize: 'clamp(3rem, 18vw, 12rem)', 
+        fontSize: 'clamp(5rem, 25vw, 18rem)',
         fontWeight: 400, 
         letterSpacing: '-0.03em', 
         marginBottom: 0, 
