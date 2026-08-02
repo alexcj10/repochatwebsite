@@ -1073,10 +1073,10 @@ const AnimatedRepoChat = () => {
             <motion.span
               key={i}
               initial={isO ? { rotateY: 0 } : {}}
-              animate={isInView && isO ? { rotateY: 360 } : { rotateY: 0 }}
+              animate={isInView && isO ? { rotateY: 720 } : { rotateY: 0 }}
               transition={
                 isO 
-                  ? { duration: 1.5, ease: "circOut", delay: 0.3 } 
+                  ? { duration: 2.4, ease: [0.16, 1, 0.3, 1], delay: 0.1 } 
                   : {}
               }
               style={{ 
