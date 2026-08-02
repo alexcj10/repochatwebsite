@@ -13,6 +13,7 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [authModalOpen, setAuthModalOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const navRef = useRef<HTMLElement>(null)
   const location = useLocation()
   const { user, profile, signOut, loading } = useAuth()
 
@@ -42,11 +43,24 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [dropdownOpen])
 
+  // Close mobile menu on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setMobileOpen(false)
+      }
+    }
+    if (mobileOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [mobileOpen])
+
   const avatarUrl = profile?.avatar_url || user?.user_metadata?.avatar_url
 
   return (
     <>
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${mobileOpen ? 'menu-open' : ''}`}>
+    <nav ref={navRef} className={`navbar ${scrolled ? 'scrolled' : ''} ${mobileOpen ? 'menu-open' : ''}`}>
       <div className="nav-inner">
         <Link 
           to="/" 
