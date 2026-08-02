@@ -393,7 +393,11 @@ export default function Landing() {
                     <circle cx="200" cy="180" r="40" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.6)" strokeWidth="2" filter="url(#glowPurple)" />
                     <circle cx="200" cy="180" r="46" fill="none" stroke="rgba(139,92,246,0.3)" strokeWidth="1.5" className="why-core-pulse" />
                     {/* RepoChat Logo */}
-                    <svg x="184" y="164" width="32" height="32" viewBox="0 0 24 24" fill="#a78bfa"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    <svg x="184" y="164" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                      <path d="m10 8-2 2 2 2" />
+                      <path d="m14 8 2 2-2 2" />
+                    </svg>
 
                     {/* Clean connection lines */}
                     <path d="M200,140 L200,69" stroke="rgba(163,230,53,0.4)" strokeWidth="1.5" strokeDasharray="6 4" className="why-line-clean" />
