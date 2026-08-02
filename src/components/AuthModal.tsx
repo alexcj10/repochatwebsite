@@ -9,107 +9,31 @@ interface AuthModalProps {
   onClose: () => void
 }
 
-// Highly Abstract, "Incomprehensible" Geometric/Alien Animation
-function AnimatedIllustration() {
+// Background using user-provided rr.jpeg image
+function AuthBannerBackground() {
   return (
-    <div className="auth-modal-banner-illustration">
-      <svg width="100%" height="100%" viewBox="0 0 380 420" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-        <defs>
-          <radialGradient id="deepVoid" cx="190" cy="210" r="250">
-            <stop offset="0%" stopColor="rgba(139, 92, 246, 0.08)" />
-            <stop offset="100%" stopColor="transparent" />
-          </radialGradient>
-          
-          <linearGradient id="alienGlow" x1="0" y1="0" x2="380" y2="420">
-            <stop offset="0%" stopColor="#0ea5e9" />
-            <stop offset="50%" stopColor="#8b5cf6" />
-            <stop offset="100%" stopColor="#f43f5e" />
-          </linearGradient>
-        </defs>
-
-        {/* Base void glow */}
-        <rect x="0" y="0" width="380" height="420" fill="url(#deepVoid)" />
-
-        {/* Mesmerizing rotating neural/fractal mesh */}
-        <motion.g
-          initial={{ rotate: 0, scale: 0.9 }}
-          animate={{ rotate: 360, scale: [0.9, 1.15, 0.9] }}
-          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-          style={{ originX: "190px", originY: "210px" }}
-        >
-          {Array.from({ length: 16 }).map((_, i) => {
-            const angle = (i / 16) * Math.PI * 2;
-            const x1 = 190 + Math.cos(angle) * 180;
-            const y1 = 210 + Math.sin(angle) * 180;
-            const x2 = 190 + Math.cos(angle * 2.5) * 80;
-            const y2 = 210 + Math.sin(angle * 2.5) * 80;
-            return (
-              <motion.path
-                key={`mesh-${i}`}
-                d={`M 190 210 Q ${x2} ${y2} ${x1} ${y1} T ${190 + Math.cos(angle + Math.PI) * 150} ${210 + Math.sin(angle + Math.PI) * 150}`}
-                stroke="url(#alienGlow)"
-                strokeWidth="1"
-                fill="none"
-                opacity="0.3"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 4, delay: i * 0.1, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-              />
-            )
-          })}
-        </motion.g>
-
-        {/* Strange geometric intersecting rings */}
-        <motion.g
-          initial={{ rotate: 360 }}
-          animate={{ rotate: 0 }}
-          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-          style={{ originX: "190px", originY: "210px" }}
-        >
-          <circle cx="190" cy="210" r="140" stroke="rgba(14, 165, 233, 0.15)" strokeWidth="1" strokeDasharray="10 30" fill="none" />
-          <circle cx="190" cy="210" r="100" stroke="rgba(244, 63, 94, 0.15)" strokeWidth="1" strokeDasharray="5 15" fill="none" />
-          
-          {/* Orbital anomalies */}
-          <motion.circle
-            cx="190" cy="70" r="3" fill="#0ea5e9"
-            animate={{ scale: [1, 2, 1], opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
-          <motion.circle
-            cx="330" cy="210" r="2" fill="#8b5cf6"
-            animate={{ scale: [1, 3, 1], opacity: [0.3, 0.8, 0.3] }}
-            transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-          />
-          <motion.circle
-            cx="50" cy="210" r="4" fill="#f43f5e"
-            animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0.9, 0.4] }}
-            transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
-          />
-        </motion.g>
-
-        {/* Abstract mathematical sine waves rippling through space */}
-        <motion.path
-          d="M -50 210 Q 50 100 190 210 T 430 210"
-          stroke="url(#alienGlow)"
-          strokeWidth="2"
-          fill="none"
-          opacity="0.4"
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 20, opacity: 0.5 }}
-          transition={{ duration: 3, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-        />
-        <motion.path
-          d="M -50 210 Q 50 320 190 210 T 430 210"
-          stroke="url(#alienGlow)"
-          strokeWidth="1"
-          fill="none"
-          opacity="0.2"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: -20, opacity: 0.3 }}
-          transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 1 }}
-        />
-
-      </svg>
+    <div className="auth-modal-banner-illustration" style={{ position: 'relative', overflow: 'hidden' }}>
+      <img 
+        src="/rr.jpeg" 
+        alt="Auth Background" 
+        style={{ 
+          width: '100%', 
+          height: '100%', 
+          objectFit: 'cover', 
+          objectPosition: 'center' 
+        }} 
+      />
+      {/* Bottom fade to blend cleanly into the modal body */}
+      <div 
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '50px',
+          background: 'linear-gradient(to bottom, transparent, #0a0a0a)'
+        }}
+      />
     </div>
   )
 }
@@ -158,7 +82,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
               <X size={16} />
             </button>
 
-            <AnimatedIllustration />
+            <AuthBannerBackground />
 
             <div className="auth-modal-logo">
               <Logo size={24} />
