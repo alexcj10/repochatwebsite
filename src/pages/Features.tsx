@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
-import { MessageSquare, GitPullRequest, ClipboardList, Dna, Database, AppWindow, Activity, Share2, Bot, Check, Globe, Lock, User, Plus, X, Columns, Maximize2 } from 'lucide-react'
+import { MessageSquare, GitPullRequest, ClipboardList, Dna, Database, AppWindow, Activity, Share2, Bot, Check, Globe, Lock, User, Plus, X, Columns, Maximize2, ChevronLeft, ChevronRight } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 
 const featureCards = [
@@ -87,8 +87,16 @@ const featureCards = [
 export default function Features() {
   const archPanelRef = useRef<HTMLDivElement>(null)
   const archPipelineRef = useRef<HTMLDivElement>(null)
+  const miniGridRef = useRef<HTMLDivElement>(null)
   const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set())
   const [activeMiniFeature, setActiveMiniFeature] = useState(0)
+
+  const scrollMiniGrid = (dir: 'left' | 'right') => {
+    if (miniGridRef.current) {
+      const scrollAmount = 400;
+      miniGridRef.current.scrollBy({ left: dir === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+    }
+  };
 
   const handleGridScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const target = e.currentTarget;
@@ -407,7 +415,11 @@ export default function Features() {
               </div>
             </ScrollReveal>
 
-            <div className="mini-features-grid" onScroll={handleGridScroll}>
+            <div className="mini-features-carousel">
+              <button className="mini-scroll-btn mini-scroll-left" onClick={() => scrollMiniGrid('left')} aria-label="Scroll left">
+                <ChevronLeft size={24} />
+              </button>
+              <div className="mini-features-grid" ref={miniGridRef} onScroll={handleGridScroll}>
               {[
                 { 
                   title: 'Message Reactions', 
@@ -652,6 +664,10 @@ export default function Features() {
                   </div>
                 </ScrollReveal>
               ))}
+            </div>
+              <button className="mini-scroll-btn mini-scroll-right" onClick={() => scrollMiniGrid('right')} aria-label="Scroll right">
+                <ChevronRight size={24} />
+              </button>
             </div>
 
             <div className="mini-features-pagination">
