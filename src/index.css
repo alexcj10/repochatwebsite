@@ -5768,6 +5768,24 @@ button.plan-btn {
 }
 
 /* ============================================
+   HERO TITLE ENTRY (replaces ScrollReveal for typewriter h1)
+   ============================================ */
+@keyframes hero-title-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title-entry {
+  animation: hero-title-in 0.7s cubic-bezier(.22, 1, .36, 1) forwards;
+}
+
+/* ============================================
    TYPEWRITER CURSOR
    ============================================ */
 .cursor-blink {

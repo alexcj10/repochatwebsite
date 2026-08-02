@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
 import { ArrowRight, Check, X, Sparkles, GitPullRequest, AlertCircle, Users, Code, Network, Cpu, Clock, DollarSign, BarChart3, Bot, ChevronLeft, ChevronRight } from 'lucide-react'
-import { motion, useScroll, useTransform, useInView, animate, useMotionValue, useSpring, AnimatePresence } from 'framer-motion'
+import { motion, useScroll, useTransform, useInView, animate, useMotionValue, useSpring } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
 import FAQ from '../components/FAQ'
@@ -73,11 +73,19 @@ export default function Landing() {
   const [titleIndex, setTitleIndex] = useState(0)
   const [currentText, setCurrentText] = useState("")
   const [isDeleting, setIsDeleting] = useState(false)
+  const [ready, setReady] = useState(false)
+
+  // Wait for the hero title CSS entry animation to finish before starting the typewriter
+  useEffect(() => {
+    const id = setTimeout(() => setReady(true), 800);
+    return () => clearTimeout(id);
+  }, []);
 
   const titles = ["code lives.", "teams build.", "work flows."]
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    if (!ready) return; // Don't start typing until the entry animation is done
+    let timeoutId: ReturnType<typeof setTimeout>;
     const currentTitle = titles[titleIndex];
     
     if (isDeleting) {
@@ -101,7 +109,7 @@ export default function Landing() {
       }
     }
     return () => clearTimeout(timeoutId);
-  }, [currentText, isDeleting, titleIndex]);
+  }, [currentText, isDeleting, titleIndex, ready]);
 
   const scrollMiniGrid = (dir: 'left' | 'right') => {
     if (miniGridRef.current) {
@@ -226,20 +234,20 @@ export default function Landing() {
         <div className="hero-inner">
 
 
-          <ScrollReveal delay={1}>
+          <div className="hero-title-entry">
             <h1 className="h1">
               Chat where the<br />
               <span className="gradient-text">{currentText}<span className="cursor-blink">|</span></span>
             </h1>
-          </ScrollReveal>
+          </div>
 
-          <ScrollReveal delay={2}>
+          <ScrollReveal delay={1}>
             <p className="body-lg">
               Turn GitHub into a real-time workspace. Discuss PRs, assign tasks, and triage issues instantly without ever breaking your flow.
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={3}>
+          <ScrollReveal delay={2}>
             <div className="hero-actions">
               <a href="#install" className="btn btn-primary btn-lg">
                 Add to Chrome — Free
