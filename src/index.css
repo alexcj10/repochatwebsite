@@ -964,8 +964,14 @@ html.nav-open-lock body {
 }
 
 @media(max-width: 480px) {
+  .mini-features-grid {
+    scroll-padding-left: 0;
+    scroll-padding-right: 0;
+  }
+
   .mini-features-grid>.reveal {
-    flex: 0 0 300px;
+    flex: 0 0 min(300px, 85vw);
+    scroll-snap-align: center;
   }
 
   .mini-feature-card {
@@ -2022,8 +2028,14 @@ textarea.form-input {
 }
 
 @media(max-width: 480px) {
+  .mini-features-grid {
+    scroll-padding-left: 0;
+    scroll-padding-right: 0;
+  }
+
   .mini-features-grid>.reveal {
-    flex: 0 0 300px;
+    flex: 0 0 min(300px, 85vw);
+    scroll-snap-align: center;
   }
 
   .mini-feature-card {
