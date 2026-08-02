@@ -12,6 +12,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [authModalOpen, setAuthModalOpen] = useState(false)
+  const [spinCount, setSpinCount] = useState(1)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const navRef = useRef<HTMLElement>(null)
   const location = useLocation()
@@ -65,6 +66,7 @@ export default function Navbar() {
         <Link 
           to="/" 
           className="nav-logo" 
+          onMouseEnter={() => setSpinCount(prev => prev + 1)}
           onClick={(e) => {
             if (location.pathname === '/') {
               e.preventDefault()
@@ -74,7 +76,22 @@ export default function Navbar() {
           }}
         >
           <Logo size={28} />
-          <span>RepoChat</span>
+          <span style={{ display: 'inline-flex' }}>
+            {["R", "e", "p", "o", "C", "h", "a", "t"].map((letter, i) => {
+              const isO = letter === "o";
+              return (
+                <motion.span
+                  key={i}
+                  initial={isO ? { rotateY: 0 } : {}}
+                  animate={isO ? { rotateY: 1440 * spinCount } : {}}
+                  transition={isO ? { duration: 2.4, ease: [0.16, 1, 0.3, 1] } : {}}
+                  style={{ display: 'inline-block', originX: 0.5, originY: 0.5 }}
+                >
+                  {letter}
+                </motion.span>
+              );
+            })}
+          </span>
         </Link>
 
         {/* Desktop Links — centered */}
@@ -152,7 +169,14 @@ export default function Navbar() {
 
         {/* Mobile: hamburger only */}
         <div className="nav-right-mobile">
-          <button className="nav-toggle" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
+          <button 
+            className="nav-toggle" 
+            onClick={() => {
+              setMobileOpen(!mobileOpen)
+              setSpinCount(prev => prev + 1)
+            }} 
+            aria-label="Toggle menu"
+          >
             <motion.svg
               width="24"
               height="24"
